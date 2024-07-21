@@ -1,0 +1,6 @@
+21-07-2024
+frontend - basic divs and forms completed and urls are sent to backend
+backend - info fetching, format fetching done
+TODO - display the available formats in the frontend, selecting and downloading the rrequired format, 
+        WHy is frontend reloading after submit button pressed (maybe change button type) IDK
+
