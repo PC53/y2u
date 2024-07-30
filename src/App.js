@@ -34,7 +34,7 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/info', { videoUrl });
+      const response = await fetch(`/.netlify/functions/getVideoInfo?url=${videoUrl}`);
       setVideoInfo(response.data);
       console.log(videoInfo);
     } catch (error) {
