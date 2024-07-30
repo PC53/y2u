@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import './App.css';
 import Footer from './Footer';
@@ -7,6 +7,7 @@ function App() {
   const [videoUrl, setVideoUrl] = useState('');
   const [videoInfo, setVideoInfo] = useState(null);
   const [error, setError] = useState(null);
+  const contentRef = useRef(null);
 
   const downloadVideo = async (format) => {
     try {
@@ -39,6 +40,8 @@ function App() {
     } catch (error) {
       setError(error.message);
     }
+
+    // contentRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -51,7 +54,7 @@ function App() {
             <input
               className='searchInput'
               type="text"
-              placeholder="Enter YouTube URL"
+              placeholder="paste video link here"
               value={videoUrl}
               onChange={(e) => setVideoUrl(e.target.value)}
               />
@@ -61,13 +64,13 @@ function App() {
       
         {videoInfo && (
           <>
-            <div className="Content"> 
+            <div className="Content" ref={contentRef}> 
               <h4>Download High-Quality Videos</h4>
               <form onSubmit={handleSubmit}>
               <input
               className='searchInput'
                 type="text"
-                placeholder="Enter YouTube URL"
+                placeholder="paste video link here"
                 value={videoUrl}
                 onChange={(e) => setVideoUrl(e.target.value)}
                 />
